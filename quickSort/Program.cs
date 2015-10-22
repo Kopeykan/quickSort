@@ -12,29 +12,33 @@ namespace quickSort
         {
             double p = arr[(last - first) / 2 + first];
             double temp;
-            int i = first, j = last;
-            while (i <= j)
+            int firstEl = first, lastEl = last;
+            while (firstEl <= lastEl)
             {
-                while (arr[i] < p && i <= last)
-                    i++;
-                while (arr[j] > p && j >= first)
-                    j--;
-                if (i <= j)
+                while (arr[firstEl] < p && firstEl <= last)
                 {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                    i++;
-                    j--;
+                    firstEl++;
+                }
+                while (arr[lastEl] > p && lastEl >= first)
+                {
+                    lastEl--;
+                }
+                if (firstEl <= lastEl)
+                {
+                    temp = arr[firstEl];
+                    arr[firstEl] = arr[lastEl];
+                    arr[lastEl] = temp;
+                    firstEl++;
+                    lastEl--;
                 }
             }
-            if (j > first)
+            if (lastEl > first)
             {
-                QuickSort(arr, first, j);
+                QuickSort(arr, first, lastEl);
             }
-            if (i < last)
+            if (firstEl < last)
             {
-                QuickSort(arr, i, last);
+                QuickSort(arr, firstEl, last);
             }
         }
         static void Main(string[] args)
